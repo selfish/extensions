@@ -1,0 +1,47 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "ngrok",
+  "title": "Ngrok",
+  "description": "Control Ngrok locally",
+  "icon": "ngrok.ico",
+  "author": "Selfish",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "tunnels",
+      "title": "Open Tunnels",
+      "subtitle": "ngrok",
+      "description": "List all open tunnels",
+      "mode": "view"
+    }, {
+      "name": "replay-last",
+      "title": "Replay Last Request",
+      "subtitle": "ngrok",
+      "description": "Replay Last Request yay",
+      "mode": "no-view"
+    }
+  ],
+  "preferences": [],
+  "dependencies": {
+    "@raycast/api": "^1.29.1",
+    "fuse.js": "^6.5.3",
+    "ngrok": "^4.3.1",
+    "node-fetch": "^3.2.0",
+    "timeago.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "~17.0.21",
+    "@types/react": "^17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.4.0",
+    "prettier": "^2.5.1",
+    "react-devtools": "^4.23.0",
+    "typescript": "^4.5.5"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop"
+  }
+}
