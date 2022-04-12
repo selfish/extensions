@@ -10,35 +10,48 @@
     {
       "name": "tunnels",
       "title": "Open Tunnels",
-      "subtitle": "ngrok",
       "description": "List all open tunnels",
       "mode": "view"
-    }, {
+    },
+    {
       "name": "replay-last",
       "title": "Replay Last Request",
-      "subtitle": "ngrok",
-      "description": "Replay Last Request yay",
+      "subtitle": "from any tunnel",
+      "description": "Replay the last request received on any tunnel in ngrok",
       "mode": "no-view"
+    },
+    {
+      "name": "open-dashboard",
+      "title": "Open Dashboard",
+      "subtitle": "/inspect",
+      "description": "Open the local Ngrok dashboard",
+      "mode": "no-view"
+    },
+    {
+      "name": "last-requests",
+      "title": "Latest requests",
+      "description": "List recent received requests",
+      "mode": "view"
     }
   ],
   "preferences": [],
   "dependencies": {
-    "@raycast/api": "^1.29.1",
+    "@raycast/api": "^1.32.1",
     "fuse.js": "^6.5.3",
     "ngrok": "^4.3.1",
-    "node-fetch": "^3.2.0",
+    "node-fetch": "^3.2.3",
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
-    "@types/node": "~17.0.21",
-    "@types/react": "^17.0.39",
-    "@typescript-eslint/eslint-plugin": "^5.12.1",
-    "@typescript-eslint/parser": "^5.12.1",
-    "eslint": "^8.9.0",
-    "eslint-config-prettier": "^8.4.0",
-    "prettier": "^2.5.1",
-    "react-devtools": "^4.23.0",
-    "typescript": "^4.5.5"
+    "@types/node": "^17.0.23",
+    "@types/react": "^18.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.6.2",
+    "react-devtools": "^4.24.4",
+    "typescript": "^4.6.3"
   },
   "scripts": {
     "build": "ray build -e dist",

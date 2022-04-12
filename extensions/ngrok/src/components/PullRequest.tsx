@@ -1,8 +1,4 @@
-import {
-  Color,
-  Image,
-  List,
-} from "@raycast/api";
+import { Color, Image, List } from "@raycast/api";
 import React from "react";
 import { format } from "timeago.js";
 

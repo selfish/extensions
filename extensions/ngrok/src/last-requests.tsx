@@ -1,37 +1,45 @@
 import { List, popToRoot, showToast, Toast } from "@raycast/api";
 import Fuse from "fuse.js";
 import { useCallback, useMemo, useState } from "react";
-import ngrok, { Ngrok, NgrokClient } from "ngrok";
+import { NgrokClient } from "ngrok";
 
 function onError(message = "failed", error?: Error) {
   popToRoot().then(() => showToast(Toast.Style.Failure, `${message}. Is Ngrok Running?`, error?.message ?? ""));
 }
 
+type State = {
+  filter?: string,
+  requests?: any[]
+}
+
 export default async function Command() {
-  const [searchText, setSearchText] = useState<string>("");
   const api = new NgrokClient("http://127.0.0.1:4040");
-  console.log(api);
   if (!api) return onError();
-  const { tunnels } = await api.listTunnels();
 
-  console.log(tunnels);
+  const { requests } = await api.listRequests({});
 
-  console.log(JSON.stringify(tunnels));
+  console.log(requests);
+
+  return RequestList(requests);
+}
+
+function RequestList(requests){
+  const [searchText, setSearchText] = useState<string>("");
 
   const fuseOpen = useMemo(
     () =>
-      new Fuse(tunnels || [], {
+      new Fuse(requests || [], {
         threshold: 0.2,
         ignoreLocation: true,
         keys: ["title", "number", "repository.nameWithOwner"],
       }),
-    [tunnels]
+    [requests]
   );
 
   const searchOpen = useCallback(
     (str: string) => {
       if (!str) {
-        return tunnels.map((item, index: number) => ({
+        return requests.map((item, index: number) => ({
           item,
           score: 1,
           refIndex: index,
@@ -40,14 +48,13 @@ export default async function Command() {
 
       return fuseOpen.search(str);
     },
-    [tunnels]
+    [requests]
   );
 
-  return (
-    <List
-      isLoading={!tunnels?.length}
+  return <List
+      isLoading={!requests?.length}
       onSearchTextChange={setSearchText}
-      searchBarPlaceholder="Search pull requests by name or number..."
+      searchBarPlaceholder="Search requests by url"
     >
       {data && searchOpen(searchText)?.length > 0 && (
         <List.Section title="Open Tunnels" subtitle={"open tunnels"}>
@@ -70,5 +77,4 @@ export default async function Command() {
         </List.Section>
       )}*/}
     </List>
-  );
 }
