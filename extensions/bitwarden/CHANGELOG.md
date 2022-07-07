@@ -1,8 +1,22 @@
 # Bitwarden Changelog
 
+## [Fixes] - 2022-07-01
+
+- Fixes an existing bug that prevented users from writing on the password generator inputs, getting stuck while writing.
+- Added new validation
+
+## [Self-hosted Server] - 2022-04-23
+
+- Added the option to use a self-hosted Bitwarden server
+- Support self-signed certificates for self-hosted server
+
+## [Isolate Extension] - 2022-04-18
+
+- Stop the Bitwarden extension from interfering with the Bitwarden CLI
+
 ## [Quick Copy] - 2022-04-08
 
-- allow copying item properties without using a dropdown
+- Allow copying item properties without using a dropdown
 
 ## [Logout] - 2022-04-06
 
